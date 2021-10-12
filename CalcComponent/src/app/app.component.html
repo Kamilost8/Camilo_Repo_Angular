@@ -1,0 +1,17 @@
+<h1>Calculator Component</h1>
+<div>
+<app-numbers
+(firstnumber) = "firstnumberEvent($event)"
+(secondnumber) = "secondnumberEvent($event)">
+</app-numbers>
+</div>
+ <app-operation
+(operation) = "operationEvent($event)">
+ ></app-operation>
+ <app-result
+ [firstnum]="firstnumber"
+ [secondnum]="secondnumber"
+ [operat]="operation"
+ (equal) = "equalEvent($event)"
+ ></app-result>
+
