@@ -1,0 +1,65 @@
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div>
+          <div class="form-group" id="userdata" ngModelGroup="userData" #userData="ngModelGroup">
+            <label for="username">Username:</label>
+            <input type="text" id="username1" class="form-control" ngModel name="username" required minlength="5">
+            <label for="password">Password:</label>
+            <input type="password" id="password1" class="form-control" ngModel name="password" required minlength="16">
+          </div>
+          <div class="form-group" id="importantInfo" ngModelGroup="importantInfo" #inportantInfo="ngModelGroup">
+            <label for="email">Email:</label>
+            <input type="email" id="email1" class="form-control" ngModel name="email" required email #email="ngModel"> 
+            <label for="phone">Phone:</label>
+            <input type="number" id="phone1" class="form-control" ngModel name="phone" required number minlength="11">
+          </div>
+          <span *ngIf="!email.valid && !email.touched" class="help-block">Please enter Valid Email</span>
+          <div class="form-group" id="OtherInfo1" ngModelGroup="OtherInfo" #OtherInfo="ngModelGroup">
+            <label for="secret">Secret Question</label>
+            <select id="secret1" class="form-control">
+              <option value="pet">Your first Pet?</option>
+              <option value="teacher">Your first teacher?</option>
+            </select>
+            <label for="answer">Answer:</label>
+            <textarea name="answer" class="form-control" rows="3" ngModel name="answer"></textarea>
+            <label for="gender">Gender:</label>
+            <div class="" *ngFor="let gender of genders">
+              <label for="">
+                <input type="radio" name="gender" ngModel [value]="gender" required>
+              </label>
+              {{gender}}
+            </div>
+          </div>
+          <div class="form-group" id="jobInfo1" ngModelGroup="jobInfo" #jobInfo="ngModelGroup">
+            <label for="job">Job</label>
+            <input type="text" id="job" class="form-control" ngModel name="job">
+            <label for="job-description">Job Description</label>
+            <input type="text" id="job-description1" class="form-control" ngModel name="job-description">
+            <label for="Salary">Salary</label>
+            <input type="number" id="salary1" class="form-control" ngModel name="salary">
+          </div>
+          <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="row" *ngIf="submitted">
+  <div class="col-xs-12">
+    <h3>Your Data</h3>
+    <p>usernames: {{userData.username}}</p>
+    <p>passwords: {{userData.password}}</p>
+    <p>emails: {{importanInfo.email}}</p>
+    <p>phones: {{importantInfo.phone}}</p>
+    <p>answers: {{OtherInfo.answer}}</p>
+    <p>genders: {{OtherInfo.gender}}</p>
+    <p>jobs: {{jobInfo.job}}</p>
+    <p>job-descriptions: {{jobInfo.job-description}}</p>
+    <p>salarys: {{jobInfo.salary}}</p>
+  </div>
+</div>
+</div>  
+</body>
